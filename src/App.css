@@ -1,0 +1,168 @@
+.AppWrapper {
+  padding: 2% 10%;
+  text-align: center;
+}
+
+body {
+  background-color: #22254b;
+  height: 100%;
+  padding:0;
+  margin:0;
+}
+
+.bookWrapper {
+  width: 300px;
+  height: 500px;
+  border: 1px solid lightgray;
+  margin: 15px 0px;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.booksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+  margin-top: 20px;
+  justify-items: center;
+}
+
+.headerWrapper {
+  height: 100%;
+  text-align: center;
+  margin: 0% 20%;
+  background-color: #373b69;
+  padding: 20px;
+  border-radius: 20px;
+  color: white;
+  font-size: 25px;
+}
+
+.inputField {
+  width: 70%;
+  height: 30px;
+  border-radius: 20px 0px 0px 20px;
+  background-color: transparent;
+  border: 2px solid #22254b;
+  outline: none;
+  color: white;
+  padding: 1px 15px;
+}
+
+.inputField::placeholder {
+  color: #7378c5;
+}
+
+.inputField:focus {
+  outline: none;
+  background-color: #22254b;
+}
+
+.textUnderInput {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #1e90ff;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.bookInfo, .recommandedBookCardInfo {
+  margin: 30px 0px;
+}
+
+.bookTitle {
+  margin: 10px 20px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.buttonSubmit {
+  height: 36px;
+  border-radius: 0px 20px 20px 0px;
+  border-width: 2px 2px 2px 0px;
+  border-color: #22254b;
+  border-style: solid;
+  background-color: transparent;
+  cursor: pointer;
+  padding-top: 0px;
+}
+
+.buttonSubmit:hover {
+  background-color: #7378c5;
+}
+
+.details {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: lightgray;
+  transform: translateY(500px);
+  border-radius: 10px;
+  transition: transform 0.3s ease-in;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.bookWrapper:hover .details {
+  transform: translateY(0);
+}
+
+.details::-webkit-scrollbar {
+  width: 1em;
+}
+
+.details::-webkit-scrollbar-track {
+  background: #CFD8DC;
+}
+
+.details::-webkit-scrollbar-thumb {
+  background-color: #90A4AE;
+  outline: 1px solid slategrey;
+}
+
+.popUp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.5));
+  z-index: 100 !important;
+}
+
+.recommandedBookCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 370px;
+  min-height: 500px;
+  margin: 15px 0px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+}
+
+.closeButton {
+  margin: 10px 10%;
+  height: 50px;
+  background-color: #1e90ff;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
