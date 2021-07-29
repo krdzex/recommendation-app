@@ -14,7 +14,7 @@ function App() {
   console.log(books)
   return (
     <div className="AppWrapper">
-      <Header getAllBooks={getAllBooks} />
+      <Header getAllBooks={getAllBooks} books={books}/>
       <Books books={books} />
     </div>
   );

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import PopUpRandom from './PopUpRandom';
 
 const Header = (props) => {
 
@@ -40,12 +41,13 @@ const Header = (props) => {
             props.getAllBooks(data.data.items);
             setError(false);
             setRecommandedBook(true)
-            setRecommandedBookInfo(data.data.items[0]);
             setAuthors(data.data.items[0].volumeInfo.authors)
         }
     }
-    console.log(recommandedBookInfo)
     const showRecommandedBook = () => {
+        let randomNumber = Math.floor(Math.random() * (10 - 1) + 1)
+        setRecommandedBookInfo(props.books[randomNumber]);
+        setAuthors(props.books[randomNumber].volumeInfo.authors)
         setShowPopup(true);
     }
     const closePopUp = () => {
@@ -55,7 +57,7 @@ const Header = (props) => {
         <div className="headerWrapper">
             <h2>Book Recommender</h2>
             <p>which book should you read?</p>
-            <form onSubmit={onSubmitHandler} style={{ width: "100%" }}>
+            <form onSubmit={onSubmitHandler} style={{ width: "100%",display: "flex", justifyContent: "center"}}>
                 <input className="inputField" placeholder="Enter the book title" value={inputValue} onChange={onChangeInput}></input>
                 <button type="submit" className="buttonSubmit">🔍</button>
             </form>
@@ -63,19 +65,7 @@ const Header = (props) => {
                 {error ? <p>Sorry we dont have book with that input</p> : recommandedBook ? <p>Press to see our recommanded Book for you</p> : <p>Search the books and chose recommanded</p>}
             </div>
             {showPopup && (
-                <div className="popUp">
-                    <div className="recommandedBookCard">
-                        <div className="recommandedBookCardInfo">
-                            <div style={{ margin: "10px" }}>Recommanded book is:</div>
-                            {recommandedBookInfo.volumeInfo.imageLinks ? <img src={recommandedBookInfo.volumeInfo.imageLinks.thumbnail} alt="bookImage" style={{ width: "70%", height: "300px" }}></img> : <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="noImage" style={{ width: "70%", height: "300px" }}></img>}
-                            <div className="bookTitle">{recommandedBookInfo.volumeInfo.title}</div>
-                            <div>{authors && authors.toString()}</div>
-                            {recommandedBookInfo.volumeInfo.pageCount ? <div style={{ margin: "10px 0px" }}><b>Page count: </b>{recommandedBookInfo.volumeInfo.pageCount}</div> : <p>There is no page count</p>}
-                            <a href={recommandedBookInfo.volumeInfo.previewLink} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>Read this book online</a>
-                            <div className="closeButton" onClick={closePopUp}>Close</div>
-                        </div>
-                    </div>
-                </div>
+                <PopUpRandom recommandedBookInfo={recommandedBookInfo} authors={authors} closePopUp={closePopUp} />
             )}
         </div>
     );

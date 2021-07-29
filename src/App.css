@@ -6,8 +6,8 @@
 body {
   background-color: #22254b;
   height: 100%;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
 
 .bookWrapper {
@@ -77,9 +77,24 @@ body {
 }
 
 .bookTitle {
+  display: -webkit-box;
   margin: 10px 20px;
   font-size: 17px;
   font-weight: 800;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.625;
+}
+
+.authors {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.625;
 }
 
 .buttonSubmit {
@@ -97,36 +112,6 @@ body {
   background-color: #7378c5;
 }
 
-.details {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: lightgray;
-  transform: translateY(500px);
-  border-radius: 10px;
-  transition: transform 0.3s ease-in;
-  max-height: 100%;
-  overflow: auto;
-}
-
-.bookWrapper:hover .details {
-  transform: translateY(0);
-}
-
-.details::-webkit-scrollbar {
-  width: 1em;
-}
-
-.details::-webkit-scrollbar-track {
-  background: #CFD8DC;
-}
-
-.details::-webkit-scrollbar-thumb {
-  background-color: #90A4AE;
-  outline: 1px solid slategrey;
-}
-
 .popUp {
   position: fixed;
   top: 0;
@@ -141,7 +126,7 @@ body {
   z-index: 100 !important;
 }
 
-.recommandedBookCard {
+.recommandedBookCard, .bookDetails {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -153,6 +138,7 @@ body {
   background-color: white;
   border-radius: 10px;
   color: black;
+  padding: 10px 0px;
 }
 
 .closeButton {
@@ -165,4 +151,32 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.detailsButton {
+  position: absolute;
+  bottom: 0;
+  margin: 10px 10%;
+  height: 40px;
+  width: -webkit-fill-available;
+  background-color: #1e90ff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bookInfoDetails {
+  margin: 15px;
+  overflow: auto;
+  height: 90%;
+  width: 95%;
+}
+
+.bookDetails {
+  min-height: 500px !important;
+  max-height: 800px;
+  height: inherit;
 }
